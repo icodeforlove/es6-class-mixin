@@ -9,7 +9,8 @@ module.exports = function(Parent, ...mixins) {
   for (let mixin of mixins) {
     for (let prop in mixin) {
       debug('mixin %s', prop);
-      Mixed.prototype[prop] = mixin[prop];
+			var descriptor = Object.getOwnPropertyDescriptor(mixin, prop);
+			Object.defineProperty(Mixed.prototype, prop, descriptor)
     }
   }
   return Mixed;
