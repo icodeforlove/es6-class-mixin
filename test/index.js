@@ -19,7 +19,8 @@ let Droppable = {
   drop() { return 'droppable'; }
 };
 
-let MyDraggable = Object.create(Draggable)
+let MyDraggable = Object.create({});
+Object.assign(MyDraggable, Draggable);
 MyDraggable.dragAndLog = function() {
   console.log("Dragged");
   return this.drag();
